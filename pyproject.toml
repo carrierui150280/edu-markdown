@@ -1,0 +1,34 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "edu-markdown"
+version = "0.1.0"
+description = "Convert teaching materials and web articles into clean Markdown with metadata."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+  "beautifulsoup4>=4.12",
+  "markdownify>=1.1",
+  "pypdf>=5.0",
+  "python-docx>=1.1",
+  "PyYAML>=6.0",
+  "readability-lxml>=0.8.1",
+  "requests>=2.32",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.0",
+  "reportlab>=4.0",
+]
+
+[project.scripts]
+edu-markdown = "edu_markdown.cli:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
