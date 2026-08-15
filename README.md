@@ -2,6 +2,37 @@
 
 `edu-markdown` turns teaching materials and web articles into clean Markdown with lightweight metadata.
 
+It is built for a very specific workflow:
+
+- collect mixed teaching materials
+- normalize them into readable Markdown
+- feed the result into search, chunking, annotation, or AI pipelines
+
+## What it does
+
+- Convert a URL into article-style Markdown
+- Convert local `html`, `txt`, and `md` files into normalized Markdown
+- Convert local `docx` files into readable Markdown
+- Convert text-based `pdf` files into readable Markdown
+- Convert a whole directory in one pass
+- Add YAML front matter so the output is ready for downstream tooling
+
+## Who it is for
+
+- teachers building reusable lesson material
+- content operators cleaning source material for knowledge bases
+- AI workflow builders who need structured Markdown instead of raw files
+
+## Why not just use a general document converter?
+
+Most document converters stop at “extract the text.”  
+`edu-markdown` is trying to do the next useful thing:
+
+- keep the output readable
+- keep the file portable
+- keep the metadata explicit
+- keep the workflow simple enough to script
+
 The first release is intentionally narrow:
 
 - Convert a URL into article-style Markdown
@@ -69,6 +100,25 @@ python -m venv .venv
 .\.venv\Scripts\edu-markdown.exe convert-dir ".\materials" -o ".\output" --recursive
 ```
 
+### Example output
+
+```yaml
+---
+title: Reading Handout
+source: C:\materials\reading-handout.pdf
+source_type: pdf_file
+fetched_at: 2026-08-15T12:00:00Z
+---
+```
+
+```md
+# Reading Handout
+
+Underline one sentence that reveals the setting.
+
+Circle one word that shows the narrator's tone.
+```
+
 If `-o` is omitted, the tool writes `<input-name>.md` next to the source file.  
 For URLs, the default output name is derived from the page title or host.
 
@@ -127,6 +177,13 @@ Those are sensible next steps, but not needed for a credible first release.
 - chunked JSON export
 - front matter fields for subject / grade / unit
 - plug-in converters for common education sources
+
+## Current boundaries
+
+- PDF support currently assumes the PDF has an extractable text layer.
+- OCR is not implemented yet.
+- `docx` conversion currently favors clean paragraph extraction over rich formatting preservation.
+- The tool is local-first and CLI-first for now.
 
 ## Dev
 
