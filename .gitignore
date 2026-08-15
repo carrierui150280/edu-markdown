@@ -3,6 +3,8 @@
 /output/
 /batch_output/
 /batch_sample/
+/ops/latest-maintenance.md
+/ops/history.jsonl
 __pycache__/
 *.pyc
 *.pyo
