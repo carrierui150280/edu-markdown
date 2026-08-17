@@ -1,12 +1,25 @@
 # edu-markdown
 
-`edu-markdown` turns teaching materials and web articles into clean Markdown with lightweight metadata.
+`edu-markdown` is a local-first CLI for turning mixed teaching materials into clean Markdown that is ready for search, chunking, and AI workflows.
 
-It is built for a very specific workflow:
+It solves one narrow but useful problem:
 
-- collect mixed teaching materials
-- normalize them into readable Markdown
-- feed the result into search, chunking, annotation, or AI pipelines
+- collect messy source material
+- normalize it into readable Markdown
+- keep lightweight metadata attached
+- make the output portable for downstream tooling
+
+## Why this is useful
+
+Teaching and content workflows often start with a mess:
+
+- public web pages
+- copied notes
+- exported HTML
+- DOCX handouts
+- text-based PDFs
+
+Most converters stop at raw extraction. `edu-markdown` tries to do the next useful thing: produce Markdown that is readable enough for humans and structured enough for later pipelines.
 
 ## What it does
 
@@ -23,36 +36,36 @@ It is built for a very specific workflow:
 - content operators cleaning source material for knowledge bases
 - AI workflow builders who need structured Markdown instead of raw files
 
-## Why not just use a general document converter?
+## Good fit
 
-Most document converters stop at “extract the text.”  
-`edu-markdown` is trying to do the next useful thing:
+- building a lesson-material knowledge base
+- preparing source text for RAG or chunking pipelines
+- cleaning exported documents before annotation or review
+- normalizing mixed folders into one Markdown-first archive
 
-- keep the output readable
-- keep the file portable
-- keep the metadata explicit
-- keep the workflow simple enough to script
+## Quick example
 
-The first release is intentionally narrow:
+Input folder:
 
-- Convert a URL into article-style Markdown
-- Convert local `html`, `txt`, and `md` files into normalized Markdown
-- Convert local `docx` files into readable Markdown
-- Convert text-based `pdf` files into readable Markdown
-- Convert a whole directory in one pass
-- Add YAML front matter so the output is ready for search, chunking, or later AI pipelines
+- `reading-handout.pdf`
+- `lesson-plan.docx`
+- `unit-notes.txt`
+- `article.html`
 
-## Why this exists
+One command:
 
-Teachers and content operators constantly collect material from:
+```powershell
+.\.venv\Scripts\edu-markdown.exe convert-dir ".\materials" -o ".\output" --recursive
+```
 
-- public web pages
-- copied notes
-- exported HTML
-- lesson docs that later need to become searchable text
+Output folder:
 
-Most tools either dump noisy HTML or aim at general-purpose document conversion.  
-`edu-markdown` starts with the simpler problem: make source material readable, portable, and structured enough for downstream workflows.
+- `reading-handout.md`
+- `lesson-plan.md`
+- `unit-notes.md`
+- `article.md`
+
+Each generated file keeps readable Markdown plus YAML front matter.
 
 ## Install
 
@@ -119,8 +132,18 @@ Underline one sentence that reveals the setting.
 Circle one word that shows the narrator's tone.
 ```
 
-If `-o` is omitted, the tool writes `<input-name>.md` next to the source file.  
-For URLs, the default output name is derived from the page title or host.
+If `-o` is omitted, the tool writes `<input-name>.md` next to the source file. For URLs, the default output name is derived from the page title or host.
+
+## Why the metadata matters
+
+Each output file keeps the original source attached:
+
+- `title`
+- `source`
+- `source_type`
+- `fetched_at`
+
+That makes the Markdown easier to audit, reprocess, index, or trace back later.
 
 ## Output shape
 
@@ -136,6 +159,12 @@ fetched_at: 2026-08-15T12:00:00Z
 ```
 
 Then the cleaned Markdown body follows.
+
+## Project status
+
+- Current release: `v0.1.0`
+- Status: usable MVP
+- Focus: clean local conversion before OCR, chunk export, or richer pipeline features
 
 ## Scope of v0
 

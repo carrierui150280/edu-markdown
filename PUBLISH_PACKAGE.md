@@ -10,6 +10,12 @@ Copy-ready repository metadata for the first public push.
 
 - Convert teaching materials and web articles into clean Markdown with metadata.
 
+## Alternate short descriptions
+
+- Local-first material ingestion for education workflows.
+- Turn mixed source materials into clean Markdown for AI pipelines.
+- Normalize lesson materials into portable Markdown with metadata.
+
 ## Final one-paragraph description
 
 - `edu-markdown` is a local-first CLI for turning mixed teaching materials such as web pages, HTML, TXT, Markdown, DOCX, and text-based PDFs into clean Markdown with YAML front matter. It is designed for teachers, content operators, and AI workflow builders who need readable, portable source material instead of raw document dumps.
@@ -31,6 +37,10 @@ Copy-ready repository metadata for the first public push.
 
 - Homepage: leave blank for now
 - Topics: use the list above
+- Social preview headline:
+  - `Clean Markdown normalization for teaching materials`
+- Social preview subtext:
+  - `Convert URLs, DOCX, PDFs, and local notes into portable Markdown for search, chunking, and AI workflows.`
 
 ## Final first pinned screenshot or preview
 
@@ -46,6 +56,15 @@ Copy-ready repository metadata for the first public push.
 - Position it as:
   - "clean Markdown normalization for teaching materials"
   - or "local-first material ingestion for education workflows"
+  - or "Markdown-first preprocessing for education and content teams"
+
+## What to emphasize on first contact
+
+- narrow problem, useful output
+- local-first instead of cloud-heavy
+- readable Markdown instead of raw extraction dumps
+- metadata kept explicit for later indexing and audit
+- useful for both educators and AI workflow builders
 
 ## Release title
 
